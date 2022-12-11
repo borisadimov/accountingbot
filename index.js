@@ -5,7 +5,8 @@ const { message } = require('telegraf/filters');
 const Airtable = require('airtable');
 require('dotenv').config();
 
-const {APP_URL, PORT, AIRTABLE_API_KEY, AIRTABLE_BASE_ID, TELEGRAM_BOT_TOKEN} = process.env;
+console.log(process.env)
+const {PORT, AIRTABLE_API_KEY, AIRTABLE_BASE_ID, TELEGRAM_BOT_TOKEN} = process.env;
 
 Airtable.configure({
     endpointUrl: 'https://api.airtable.com',
@@ -38,7 +39,7 @@ console.log(APP_URL);
 bot.launch({
     webhook: {
       // Public domain for webhook; e.g.: example.com
-      domain: APP_URL,
+      domain: 'whale-app-8nwsl.ondigitalocean.app',
   
       // Port to listen on; e.g.: 8080
       port: PORT
