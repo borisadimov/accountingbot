@@ -35,22 +35,10 @@ bot.on(message('text'), (ctx) => {
       });    
 });
 
-console.log(APP_URL);
 bot.launch({
     webhook: {
-      // Public domain for webhook; e.g.: example.com
       domain: 'whale-app-8nwsl.ondigitalocean.app',
-  
-      // Port to listen on; e.g.: 8080
       port: PORT
-  
-      // Optional path to listen for.
-      // `bot.secretPathComponent()` will be used by default
-    //   hookPath: webhookPath,
-  
-      // Optional secret to be sent back in a header for security.
-      // e.g.: `crypto.randomBytes(64).toString("hex")`
-    //   secretToken: randomAlphaNumericString,
     },
   });
 
