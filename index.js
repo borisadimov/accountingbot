@@ -1,4 +1,5 @@
-const Telegraf = require('telegraf');
+const { Telegraf } = require('telegraf');
+const { message } = require('telegraf/filters');
 const Airtable = require('airtable');
 require('dotenv').config();
 
