@@ -6,7 +6,7 @@ const Airtable = require('airtable');
 require('dotenv').config();
 
 console.log(process.env)
-const {PORT, AIRTABLE_API_KEY, AIRTABLE_BASE_ID, TELEGRAM_BOT_TOKEN} = process.env;
+const {DOMAIN, PORT, AIRTABLE_API_KEY, AIRTABLE_BASE_ID, TELEGRAM_BOT_TOKEN} = process.env;
 
 Airtable.configure({
     endpointUrl: 'https://api.airtable.com',
@@ -37,7 +37,7 @@ bot.on(message('text'), (ctx) => {
 
 bot.launch({
     webhook: {
-      domain: 'whale-app-8nwsl.ondigitalocean.app',
+      domain: DOMAIN,
       port: PORT
     },
   });
