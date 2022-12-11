@@ -5,7 +5,7 @@ const { message } = require('telegraf/filters');
 const Airtable = require('airtable');
 require('dotenv').config();
 
-const {AIRTABLE_API_KEY, AIRTABLE_BASE_ID, TELEGRAM_BOT_TOKEN} = process.env;
+const {APP_URL, PORT, AIRTABLE_API_KEY, AIRTABLE_BASE_ID, TELEGRAM_BOT_TOKEN} = process.env;
 
 Airtable.configure({
     endpointUrl: 'https://api.airtable.com',
@@ -34,37 +34,26 @@ bot.on(message('text'), (ctx) => {
       });    
 });
 
-// bot.launch({
-//     webhook: {
-//       // Public domain for webhook; e.g.: example.com
-//       domain: webhookDomain,
+console.log(APP_URL);
+bot.launch({
+    webhook: {
+      // Public domain for webhook; e.g.: example.com
+      domain: APP_URL,
   
-//       // Port to listen on; e.g.: 8080
-//       port: port,
+      // Port to listen on; e.g.: 8080
+      port: PORT
   
-//       // Optional path to listen for.
-//       // `bot.secretPathComponent()` will be used by default
-//       hookPath: webhookPath,
+      // Optional path to listen for.
+      // `bot.secretPathComponent()` will be used by default
+    //   hookPath: webhookPath,
   
-//       // Optional secret to be sent back in a header for security.
-//       // e.g.: `crypto.randomBytes(64).toString("hex")`
-//       secretToken: randomAlphaNumericString,
-//     },
-//   });
+      // Optional secret to be sent back in a header for security.
+      // e.g.: `crypto.randomBytes(64).toString("hex")`
+    //   secretToken: randomAlphaNumericString,
+    },
+  });
 
 
 // Enable graceful stop
 process.once('SIGINT', () => bot.stop('SIGINT'));
 process.once('SIGTERM', () => bot.stop('SIGTERM'));
-
-
-const express = require('express');
-const app = express();
-
-// get our port
-const port = process.env.PORT || 3000;
-
-// applicaton code goes here
-
-// have node listen on our port
-app.listen(port, () => console.log(`App listening on port ${port}!`));
